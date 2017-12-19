@@ -1,0 +1,3 @@
+[submodule "miku_3d"]
+	path = miku_3d
+	url = https://github.com/Channely/miku_3d.git
