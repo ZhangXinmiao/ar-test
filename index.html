@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>test ar</title>
+		<style>
+			html, body, .container {
+				height: 100%;
+				width: 100%;
+			}
+
+			.container {
+				overflow: hidden;
+			}
+
+			video {
+				height: 100%;
+				margin-left: -50%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container" id="container">
+			<!-- <canvas id="canvas"></canvas> -->
+			<!-- <video autoplay="autoplay"></video> -->
+		</div>
+	</body>
+
+	<script>
+		// var video = document.querySelector('video');
+		// function successFunc (stream) {
+		// 	// alert('success');
+		// 	video.src = window.URL && window.URL.createObjectURL(stream) || stream;
+		// }
+    //
+		// function errorFunc () {
+		// 	alert('error');
+		// }
+    //
+		// function getMedia() {
+		// 		if (navigator.getUserMedia) {
+		// 				navigator.getUserMedia({
+		// 						'video': {
+		// 								'optional': [{
+		// 										'sourceId': 1 //0为前置摄像头，1为后置
+		// 								}]
+		// 						},
+		// 						'audio':true
+		// 				}, successFunc, errorFunc);    //success是获取成功的回调函数
+		// 		}
+		// 		else {
+		// 				alert('Native device media streaming (getUserMedia) not supported in this browser.');
+		// 		}
+		// }
+
+		// getMedia();
+
+	</script>
+	<!-- <script type="text/javascript" src="/js-aruco/src/cv.js"></script>
+  <script type="text/javascript" src="/js-aruco/src/aruco.js"></script> -->
+	<script>
+		// var canvas = document.getElementById("canvas");
+		// var context = canvas.getContext("2d");
+		// var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+		// var detector = new AR.Detector();
+		// var markers = detector.detect(imageData);
+		// console.log("markers", markers);
+
+	</script>
+	<script src="./jsartoolkit5/build/artoolkit.min.js"></script>
+	<script src="./jsartoolkit5/js/artoolkit.three.js"></script>
+	<script>
+	// var video = ARController.getUserMedia({
+	// 	maxARVideoSize: 320, // do AR processing on scaled down video of this size
+	// 	facing: "environment",
+	// 	onSuccess: function(video) {
+	// 		console.log('got video', video);
+	// 		var container = document.getElementById('container');
+	// 		container.appendChild(video);
+	// 		var camera = new ARCameraParam('jsartoolkit5/examples/Data/camera_para.dat');
+	// 		camera.onload = function() {
+	// 			var arController = new ARController(video.videoWidth, video.videoHeight, camera);
+	// 			console.log('ARController ready for use', arController);
+  //
+	// 			// // Set the ARController pattern detection mode to detect barcode markers.
+	// 			arController.setPatternDetectionMode( artoolkit.AR_MATRIX_CODE_DETECTION );
+	// 	    //
+	// 			// // Add an event listener to listen to getMarker events on the ARController.
+	// 			// // Whenever ARController#process detects a marker, it fires a getMarker event
+	// 			// // with the marker details.
+	// 			// //
+	// 			var detectedBarcodeMarkers = {};
+	// 			arController.addEventListener('getMarker', function(ev) {
+	// 				var barcodeId = ev.data.marker.idMatrix;
+	// 				if (barcodeId !== -1) {
+	// 					console.log("saw a barcode marker with id", barcodeId);
+  //
+	// 					// Note that you need to copy the values of the transformation matrix,
+	// 					// as the event transformation matrix is reused for each marker event
+	// 					// sent by an ARController.
+	// 					//
+	// 					var transform = ev.data.matrix;
+	// 					if (!detectedBarcodeMarkers[barcodeId]) {
+	// 						detectedBarcodeMarkers[barcodeId] = {
+	// 							visible: true,
+	// 							matrix: new Float32Array(16)
+	// 						}
+	// 					}
+	// 					detectedBarcodeMarkers[barcodeId].visible = true;
+	// 					detectedBarcodeMarkers[barcodeId].matrix.set(transform);
+  //
+	// 				}
+	// 			});
+	// 	    //
+	// 			var cameraMatrix = arController.getCameraMatrix();
+  //
+	// 			for (var i in detectedBarcodeMarkers) {
+	// 				detectedBarcodeMarkers.visible = false;
+	// 			}
+	// 	    //
+	// 			// // Process a video frame to find markers in it.
+	// 			// // Each detected marker fires a getMarker event.
+	// 			// //
+	// 			arController.process(video);
+  //
+	// 			ARController.getUserMediaThreeScene(
+  //
+	// 			);
+  //
+  //
+	// 		};
+	// 	}
+	// });
+	//
+	window.ARThreeOnLoad = function() {
+
+		ARController.getUserMediaThreeScene({maxARVideoSize: 320, cameraParam: 'Data/camera_para-iPhone 5 rear 640x480 1.0m.dat',
+		onSuccess: function(arScene, arController, arCamera) {
+
+			arController.setPatternDetectionMode(artoolkit.AR_MATRIX_CODE_DETECTION);
+
+			document.body.className = arController.orientation;
+
+			var renderer = new THREE.WebGLRenderer({antialias: true});
+			if (arController.orientation === 'portrait') {
+				var w = (window.innerWidth / arController.videoHeight) * arController.videoWidth;
+				var h = window.innerWidth;
+				renderer.setSize(w, h);
+				renderer.domElement.style.paddingBottom = (w-h) + 'px';
+			} else {
+				if (/Android|mobile|iPad|iPhone/i.test(navigator.userAgent)) {
+					renderer.setSize(window.innerWidth, (window.innerWidth / arController.videoWidth) * arController.videoHeight);
+				} else {
+					renderer.setSize(arController.videoWidth, arController.videoHeight);
+					document.body.className += ' desktop';
+				}
+			}
+
+			document.body.insertBefore(renderer.domElement, document.body.firstChild);
+
+
+			// Create a couple of lights for our AR scene.
+			var light = new THREE.PointLight(0xffffff);
+			light.position.set(40, 40, 40);
+			arScene.scene.add(light);
+
+			var light = new THREE.PointLight(0xff8800);
+			light.position.set(-40, -20, -30);
+			arScene.scene.add(light);
+
+
+			var box = createBox();
+
+			renderer.domElement.addEventListener('click', function(ev) {
+				if (findObjectUnderEvent(ev, arScene.camera, box.walls)) {
+					box.box.open = !box.box.open;
+				}
+			}, false);
+
+			var markerRoot = arController.createThreeBarcodeMarker(20);
+			markerRoot.add(box.box);
+			arScene.scene.add(markerRoot);
+
+			var tick = function() {
+				arScene.process();
+
+				box.box.tick();
+
+				arScene.renderOn(renderer);
+				requestAnimationFrame(tick);
+			};
+
+			tick();
+
+		}});
+
+		delete window.ARThreeOnLoad;
+
+	};
+
+	
+
+
+
+
+	</script>
+</html>
