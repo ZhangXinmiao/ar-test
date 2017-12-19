@@ -221,6 +221,8 @@ window.ARThreeOnLoad = function() {
     var windowHalfX = window.innerWidth / 2;
     var windowHalfY = window.innerHeight / 2;
 
+
+
 		loader.load('./miku_3d/miku_v2.pmd', './miku_3d/wavefile_v2.vmd', function (object) {
 
 				mesh = object;
@@ -251,7 +253,6 @@ window.ARThreeOnLoad = function() {
 			arScene.process();
 
 			// box.box.tick();
-
 			arScene.renderOn(renderer);
 			requestAnimationFrame(tick);
 		};
