@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>test miku</title>
+<title>test ar</title>
 <meta meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 <style>
 html,body {
@@ -20,6 +20,7 @@ html,body {
 </style>
 </head>
 <body>
+
 
 <script async src="./artoolkit.min.js"></script>
 <script async src="./miku_3d/three.js"></script>
@@ -182,25 +183,16 @@ window.ARThreeOnLoad = function() {
 
 
 		// Create a couple of lights for our AR scene.
-		// var light = new THREE.PointLight(0xffffff);
-		// light.position.set(40, 40, 40);
-		// arScene.scene.add(light);
-    //
-		// var light = new THREE.PointLight(0xff8800);
-		// light.position.set(-40, -20, -30);
-		// arScene.scene.add(light);
+		var light = new THREE.PointLight(0xffffff);
+		light.position.set(40, 40, 40);
+		arScene.scene.add(light);
+
+		var light = new THREE.PointLight(0xff8800);
+		light.position.set(-40, -20, -30);
+		arScene.scene.add(light);
 
 
-		var box = createBox();
-
-		renderer.domElement.addEventListener('click', function(ev) {
-			if (findObjectUnderEvent(ev, arScene.camera, box.walls)) {
-				box.box.open = !box.box.open;
-			}
-		}, false);
-
-
-		//加载mmd模型
+		// 加载mmd模型
 		var onProgress = function (xhr) {
 				if (xhr.lengthComputable) {
 						var percentComplete = xhr.loaded / xhr.total * 100;
@@ -221,15 +213,17 @@ window.ARThreeOnLoad = function() {
     var windowHalfX = window.innerWidth / 2;
     var windowHalfY = window.innerHeight / 2;
 
+		var clock = new THREE.Clock();
 
+		var markerObject3D = new THREE.Object3D()
+		arScene.scene.add(markerObject3D);
 
 		loader.load('./miku_3d/miku_v2.pmd', './miku_3d/wavefile_v2.vmd', function (object) {
 
 				mesh = object;
-
-				mesh.position.y = -10;
-				arScene.scene.add(mesh);
-
+				mesh.scale.set(2, 2, 2).multiplyScalar(1 / 35);
+				mesh.rotation.x = Math.PI / 2;
+        markerObject3D.add(mesh);
 				var animation = new THREE.Animation(mesh, mesh.geometry.animation);
 				animation.play();
 
@@ -238,32 +232,38 @@ window.ARThreeOnLoad = function() {
 
 				ikSolver = new THREE.CCDIKSolver(mesh);
 
-				renderer.setPixelRatio(window.devicePixelRatio);
-        renderer.setSize(windowWidth, windowHeight);
-
 		}, onProgress, onError);
     // 加载mmd模型
 
 
+		renderer.domElement.addEventListener('click', function(ev) {
+			if (findObjectUnderEvent(ev, arScene.camera, box.walls)) {
+				box.box.open = !box.box.open;
+			}
+		}, false);
+
 		var markerRoot = arController.createThreeBarcodeMarker(20);
-		markerRoot.add(box.box);
+		// markerRoot.add(box.box);
+		markerRoot.add(markerObject3D);
 		arScene.scene.add(markerRoot);
 
 		var tick = function() {
 			arScene.process();
 
-			// box.box.tick();
+			THREE.AnimationHandler.update(clock.getDelta());
+
+			// this may should be in THREE.Animation
+			if (ikSolver) {
+
+					ikSolver.update();
+
+			}
+
 			arScene.renderOn(renderer);
 			requestAnimationFrame(tick);
 		};
 
-		function animate() {
-        requestAnimationFrame(animate);
-        tick();
-    }
-
-		// tick();
-		animate();
+		tick();
 
 	}});
 
