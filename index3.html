@@ -22,9 +22,9 @@ html,body {
 <body>
 
 
-<script async src="./artoolkit.min.js"></script>
-<script async src="./miku_3d/three.js"></script>
-<script async src="./artoolkit.three.js"></script>
+<script src="./artoolkit.min.js"></script>
+<script src="./miku_3d/three.js"></script>
+<script src="./artoolkit.three.js"></script>
 <script src="./miku_3d/MMDLoader.js"></script>
 <script src="./miku_3d/MorphAnimation2.js"></script>
 <script src="./miku_3d/CCDIKSolver.js"></script>
@@ -157,7 +157,7 @@ var createBox = function() {
 
 window.ARThreeOnLoad = function() {
 
-	ARController.getUserMediaThreeScene({maxARVideoSize: 320, cameraParam: './camera_para-iPhone.dat',
+	ARController.getUserMediaThreeScene({maxARVideoSize: 320, cameraParam: './camera_para-iPhone.dat', facing: { exact: 'environment'},
 	onSuccess: function(arScene, arController, arCamera) {
 
 		arController.setPatternDetectionMode(artoolkit.AR_MATRIX_CODE_DETECTION);
