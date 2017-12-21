@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d19645db-5a57-45ec-8eac-0c922cf2c895" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artoolkit.min.js" afterPath="$PROJECT_DIR$/artoolkit.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index3.html" afterPath="$PROJECT_DIR$/index3.html" />
     </list>
     <ignored path="ar-test.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,21 +24,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="artoolkit.min.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="artoolkit.min.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/artoolkit.min.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="249">
-              <caret line="0" column="12259" selection-start-line="0" selection-start-column="12259" selection-end-line="0" selection-end-column="12259" />
+              <caret line="0" column="14941" selection-start-line="0" selection-start-column="14919" selection-end-line="0" selection-end-column="14941" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index3.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index3.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index3.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
-              <caret line="159" column="102" selection-start-line="159" selection-start-column="102" selection-end-line="159" selection-end-column="102" />
+              <caret line="159" column="103" selection-start-line="159" selection-start-column="103" selection-end-line="159" selection-end-column="103" />
               <folding />
             </state>
           </provider>
@@ -51,8 +52,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/index3.html" />
         <option value="$PROJECT_DIR$/artoolkit.min.js" />
+        <option value="$PROJECT_DIR$/index3.html" />
       </list>
     </option>
   </component>
@@ -135,12 +136,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1513858454617</updated>
-      <workItem from="1513858456074" duration="580000" />
+      <workItem from="1513858456074" duration="949000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="580000" />
+    <option name="totallyTimeSpent" value="949000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
@@ -172,18 +173,18 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/index3.html">
+    <entry file="file://$PROJECT_DIR$/artoolkit.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="159" column="102" selection-start-line="159" selection-start-column="102" selection-end-line="159" selection-end-column="102" />
+        <state relative-caret-position="249">
+          <caret line="0" column="14941" selection-start-line="0" selection-start-column="14919" selection-end-line="0" selection-end-column="14941" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/artoolkit.min.js">
+    <entry file="file://$PROJECT_DIR$/index3.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="0" column="12259" selection-start-line="0" selection-start-column="12259" selection-end-line="0" selection-end-column="12259" />
+        <state relative-caret-position="135">
+          <caret line="159" column="103" selection-start-line="159" selection-start-column="103" selection-end-line="159" selection-end-column="103" />
           <folding />
         </state>
       </provider>
