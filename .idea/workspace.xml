@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d19645db-5a57-45ec-8eac-0c922cf2c895" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artoolkit.min.js" afterPath="$PROJECT_DIR$/artoolkit.min.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index3.html" afterPath="$PROJECT_DIR$/index3.html" />
     </list>
     <ignored path="ar-test.iws" />
@@ -38,7 +37,7 @@
         <entry file="file://$PROJECT_DIR$/index3.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
-              <caret line="159" column="103" selection-start-line="159" selection-start-column="103" selection-end-line="159" selection-end-column="103" />
+              <caret line="159" column="109" selection-start-line="159" selection-start-column="109" selection-end-line="159" selection-end-column="109" />
               <folding />
             </state>
           </provider>
@@ -136,12 +135,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1513858454617</updated>
-      <workItem from="1513858456074" duration="949000" />
+      <workItem from="1513858456074" duration="1026000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="949000" />
+    <option name="totallyTimeSpent" value="1026000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
@@ -184,7 +183,7 @@
     <entry file="file://$PROJECT_DIR$/index3.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
-          <caret line="159" column="103" selection-start-line="159" selection-start-column="103" selection-end-line="159" selection-end-column="103" />
+          <caret line="159" column="109" selection-start-line="159" selection-start-column="109" selection-end-line="159" selection-end-column="109" />
           <folding />
         </state>
       </provider>
